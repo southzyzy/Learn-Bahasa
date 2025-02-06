@@ -27,7 +27,7 @@ def main():
     question_data = st.session_state.shuffled_questions[st.session_state.page]
 
     # Display question using Streamlit's built-in Markdown formatting (Safe)
-    st.markdown(f"**:red[Question {st.session_state.page + 1} of {total_questions}:] {question_data['question']}**")
+    st.markdown(f"**Question {st.session_state.page + 1} of {total_questions}: :red[{question_data['question']}]**")
 
     # User input
     user_answer = st.text_input("Your answer:", key=f"q{st.session_state.page}")

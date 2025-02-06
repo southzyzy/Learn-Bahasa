@@ -32,8 +32,8 @@ def main():
         unsafe_allow_html=True,
     )
 
-    st.title("Fill in the Blanks Quiz")
-    st.write("Test your knowledge by filling in the blanks!")
+    st.title("Bahasa Melayu Quiz")
+    st.write("Test your Melayu knowledge by filling in the blanks!")
 
     total_questions = len(st.session_state.shuffled_questions)
 

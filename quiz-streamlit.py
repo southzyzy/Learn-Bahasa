@@ -14,26 +14,8 @@ if "shuffled_questions" not in st.session_state:
 def main():
     st.set_page_config(page_title="Fill in the Blanks Quiz", layout="centered")
 
-    # Custom CSS to center content
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-        }
-        .stButton button {
-            width: 150px;
-            margin: 10px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.title("Bahasa Melayu Quiz")
-    st.write("Test your Melayu knowledge by filling in the blanks!")
+    st.title("Fill in the Blanks Quiz")
+    st.write("Test your knowledge by filling in the blanks!")
 
     total_questions = len(st.session_state.shuffled_questions)
 
@@ -43,8 +25,9 @@ def main():
 
     # Get current question from shuffled list
     question_data = st.session_state.shuffled_questions[st.session_state.page]
-    st.write(f"**Question {st.session_state.page + 1} of {total_questions}**")
-    st.write(f"**{question_data['question']}**")
+
+    # Display question using Streamlit's built-in Markdown formatting (Safe)
+    st.markdown(f"**:red[Question {st.session_state.page + 1} of {total_questions}:] {question_data['question']}**")
 
     # User input
     user_answer = st.text_input("Your answer:", key=f"q{st.session_state.page}")
@@ -64,7 +47,8 @@ def main():
                 st.error(f"Incorrect. The correct answer is: **{question_data['answer']}**")
     with col3:
         if st.button("Show Answer"):
-            st.info(f"The correct answer is: **{question_data['answer']}**")
+            # Display answer using safe Markdown formatting
+            st.markdown(f"**:green[The correct answer is:] {question_data['answer']}**")
 
     # Next Question button
     if st.session_state.page < total_questions - 1:
